@@ -6,35 +6,37 @@ import (
 )
 
 type Coord struct {
-    fileName string
-    ppline int
-    line int
-    col int
+    FileName string
+    Ppline int
+    Line int
+    Col int
 }
 
 type Input struct {
-    fileName string
-    base *byte
-    cursor *byte
-    lineHead *byte
-    line int
-    fp *os.File
+    FileName string
+    Buf []byte
     Size int64
+    Cursor int64
+    LineHead int64
+    Line int64
+    Fp *os.File
 }
 
-func (in *Input) ReadSourceFile(fileName string) *byte {
+func (in *Input) ReadSourceFile(fileName string) {
     fp, err := os.Open(fileName)
     utils.CheckErr(err)
     defer fp.Close()
-    in.fp = fp
+    in.Fp = fp
  
     size, err := fp.Seek(0, os.SEEK_END)
     in.Size = size
     fp.Seek(0, os.SEEK_SET)
-    buf := make([]byte, size)
-    fp.Read(buf)
+    in.Buf = make([]byte, size)
+    fp.Read(in.Buf)
     utils.CheckErr(err)
-    in.base = &buf[0]
-
-    return in.base
 }
+
+var (
+    END_OF_FILE byte = 255 
+    IN = Input {}
+)

@@ -8,9 +8,11 @@ import (
 
 func main() {
     in := io.Input{}
-    buf := in.ReadSourceFile("test.txt")
+    in.ReadSourceFile("test.txt")
     fmt.Printf("%d\n", in.Size)
-    for i:=0; i<in.Size; i++ {
-        fmt.Printf("%s\n", string(buf[i]))
+    var i int64 
+    fmt.Printf("%s\n", string(in.Buf))
+    for i=0; i<in.Size; i++ {
+        fmt.Printf("%s\n", string(in.Buf[i]))
     }
 }
