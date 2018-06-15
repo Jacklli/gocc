@@ -7,18 +7,52 @@ type KeyWord struct {
     tok int
 }
 
-
 var (
-    keywordsA = []KeyWord {
+    Keywords_ = []KeyWord {
+        KeyWord {
+            "__int64",
+            0,
+            TK_INT64,
+        },
+    }
+
+    KeywordsA = []KeyWord {
         KeyWord {
             "auto",
             4,
             TK_AUTO,
         },
+    }
+
+    KeywordsB = []KeyWord {
         KeyWord {
-            NULL,
-            0,
-            TK_ID,
+            "break",
+            5,
+            TK_BREAK,
+        },
+    }
+
+    KeywordsC = []KeyWord {
+        KeyWord {
+            "case",
+            4,
+            TK_CASE,
+        },
+        KeyWord {
+            "char",
+            4,
+            TK_CHAR,
+        },
+        KeyWord {
+            "const",
+            5,
+            TK_CONST,
+        },
+        KeyWord {
+            "continue",
+            8,
+            TK_CONTINUE,
         },
     }
 )
+
