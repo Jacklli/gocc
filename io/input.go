@@ -16,9 +16,9 @@ type Input struct {
     FileName string
     Buf []byte
     Size int64
-    Cursor int64
     LineHead int64
     Line int64
+    ForwardCUR int64
     Fp *os.File
 }
 
@@ -36,7 +36,3 @@ func (in *Input) ReadSourceFile(fileName string) {
     utils.CheckErr(err)
 }
 
-var (
-    END_OF_FILE byte = 255 
-    IN = Input {}
-)

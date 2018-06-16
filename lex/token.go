@@ -213,3 +213,11 @@ const (
     TOKEN(TK_END,           "EOF")
 */
 
+type TK_value struct {
+    i int
+    f float32
+    d float64
+    p *string
+    kd int // 1 for int, 2 for float, 3 for double, 4 for *string
+}
+
