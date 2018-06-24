@@ -3,6 +3,7 @@ package lex
 
 import (
     "github.com/gocc/io"
+    "fmt"
 )
 
 var (
@@ -79,4 +80,64 @@ func ScanPPLine() {
         for IN.Buf[IN.ForwardCUR] != '\n' && !IS_EOF(IN.Buf[IN.ForwardCUR]) {
             IN.ForwardCUR++
         }
+}
+
+func SkipWhiteSpace() {
+    var ch byte
+
+again:
+    ch = IN.Buf[IN.ForwardCUR]
+    for ch == '\t' || ch == '\v' || ch == '\f' || ch == ' ' ||
+        ch == '\r' || ch == '\n' || ch == '/'  || ch == '#' {
+        switch ch {
+            case '\n':
+                TokenCoord.Ppline++
+                IN.Line++
+                IN.ForwardCUR++
+                IN.LineHead = IN.ForwardCUR
+                break
+
+            case '#':
+                ScanPPLine()
+                break
+
+            case '/':           // comments
+                if IN.Buf[IN.ForwardCUR+1] != '/' && IN.Buf[IN.ForwardCUR+1] != '*' {
+                    return
+                }
+                IN.ForwardCUR++
+                if IN.Buf[IN.ForwardCUR] == '/' {
+                    IN.ForwardCUR++
+                    for IN.Buf[IN.ForwardCUR] != '\n' && !IS_EOF(IN.Buf[IN.ForwardCUR]) {
+                        IN.ForwardCUR++
+                    }
+                } else {
+                    IN.ForwardCUR++
+                    for IN.Buf[IN.ForwardCUR] != '*' || IN.Buf[IN.ForwardCUR+1] != '/' {
+                        if IN.Buf[IN.ForwardCUR] == '\n' {
+                            TokenCoord.Ppline++
+                            IN.Line++
+                        } else if (IS_EOF(IN.Buf[IN.ForwardCUR]) || IS_EOF(IN.Buf[IN.ForwardCUR+1])) {
+                            fmt.Println("Comment is not closed.")
+                            return
+                        }
+                        IN.ForwardCUR++
+                    }
+                    IN.ForwardCUR += 2
+                }
+                break
+                
+            default:
+                IN.ForwardCUR++
+                break
+        }
+        ch = IN.Buf[IN.ForwardCUR]
+    }
+
+
+    // not finished yet
+
+    if (ExtraWhiteSpace != nil) {
+        goto again
+    }
 }
