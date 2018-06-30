@@ -7,9 +7,9 @@ import (
 
 type Coord struct {
     FileName string
-    Ppline int
-    Line int
-    Col int
+    Ppline int64
+    Line int64
+    Col int64
 }
 
 type Input struct {
