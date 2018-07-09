@@ -7,7 +7,125 @@ type KeyWord struct {
     tok int
 }
 
+
 var (
+    Keywords_ = []KeyWord {
+    }
+
+    KeywordsA = []KeyWord {
+    }
+
+    KeywordsB = []KeyWord {
+    }
+
+    KeywordsC = []KeyWord {
+    }
+
+    KeywordsD = []KeyWord {
+    }
+   
+    KeywordsE = []KeyWord {
+        KeyWord {
+            "else",
+            4,
+            TK_ELSE,
+        },
+    }
+
+    KeywordsF = []KeyWord {
+        KeyWord {
+            "for",
+            3,
+            TK_FOR,
+        },
+    }
+    
+    KeywordsG = []KeyWord {
+    }
+
+    KeywordsH = []KeyWord {
+    }
+
+    KeywordsI = []KeyWord {
+        KeyWord {
+            "if",
+            2,
+            TK_IF,
+        },
+        KeyWord {
+            "int",
+            3,
+            TK_INTCONST,
+        },
+    }
+
+    KeywordsJ = []KeyWord {
+    }
+
+    KeywordsK = []KeyWord {
+    }
+
+    KeywordsL = []KeyWord {
+    }
+
+    KeywordsM = []KeyWord {
+    }
+
+    KeywordsN = []KeyWord {
+    }
+
+    KeywordsO = []KeyWord {
+    }
+
+    KeywordsP = []KeyWord {
+    }
+
+    KeywordsQ = []KeyWord {
+    }
+
+    KeywordsR = []KeyWord {
+        KeyWord {
+            "return",
+            6,
+            TK_RETURN,
+        },
+    }
+
+    KeywordsS = []KeyWord {
+    }
+    
+    KeywordsT = []KeyWord {
+    }
+
+    KeywordsU = []KeyWord {
+    }
+
+    KeywordsV = []KeyWord {
+    }
+
+    KeywordsW = []KeyWord {
+    }
+
+    KeywordsX = []KeyWord {
+    }
+
+    KeywordsY = []KeyWord {
+    }
+
+    KeywordsZ = []KeyWord {
+    }
+
+    Keywords =  [][]KeyWord {
+        Keywords_, KeywordsA, KeywordsB, KeywordsC,
+        KeywordsD, KeywordsE, KeywordsF, KeywordsG,
+        KeywordsH, KeywordsI, KeywordsJ, KeywordsK,
+        KeywordsL, KeywordsM, KeywordsN, KeywordsO,
+        KeywordsP, KeywordsQ, KeywordsR, KeywordsS,
+        KeywordsT, KeywordsU, KeywordsV, KeywordsW,
+        KeywordsX, KeywordsY, KeywordsZ,
+    }
+
+/*
     Keywords_ = []KeyWord {
         KeyWord {
             "__int64",
@@ -388,5 +506,6 @@ var (
         KeywordsT, KeywordsU, KeywordsV, KeywordsW,
         KeywordsX, KeywordsY, KeywordsZ,
     }
+*/
 )
 

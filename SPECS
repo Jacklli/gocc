@@ -1,2 +1,0 @@
-
-1, normally prefer int64 for number (avoid syscall return value type not match)

@@ -2,109 +2,61 @@
 package lex
 
 const (
-    TK_AUTO = iota
-    TK_EXTERN
-    TK_REGISTER
-    TK_STATIC
-    TK_TYPEDEF
-    TK_CONST
-    TK_VOLATILE
-    TK_SIGNED
-    TK_UNSIGNED
-    TK_SHORT
-    TK_LONG
-    TK_CHAR
-    TK_INT
-    TK_INT64
-    TK_FLOAT
-    TK_DOUBLE
-    TK_ENUM
-    TK_STRUCT
-    TK_UNION
-    TK_VOID
-    TK_BREAK
-    TK_CASE
-    TK_CONTINUE
-    TK_DEFAULT
-    TK_DO
-    TK_ELSE
+    TK_ELSE = iota
     TK_FOR
-    TK_GOTO
     TK_IF
     TK_RETURN
-    TK_SWITCH
-    TK_WHILE
-    TK_SIZEOF
 
     //identifier
     TK_ID
 
     //constant
     TK_INTCONST
-    TK_UINTCONST
-    TK_LONGCONST
-    TK_ULONGCONST
-    TK_LLONGCONST
-    TK_ULLONGCONST
-    TK_FLOATCONST
-    TK_DOUBLECONST
-    TK_LDOUBLECONST
-    TK_STRING
-    TK_WIDESTRING
 
     //operators
-    TK_COMMA
-    TK_QUESTION
-    TK_COLON
     TK_ASSIGN
-    TK_BITOR_ASSIGN
-    TK_BITXOR_ASSIGN
-    TK_BITAND_ASSIGN
-    TK_LSHIFT_ASSIGN
-    TK_RSHIFT_ASSIGN
-    TK_ADD_ASSIGN
-    TK_SUB_ASSIGN
-    TK_MUL_ASSIGN
-    TK_DIV_ASSIGN
-    TK_MOD_ASSIGN
-    TK_OR
-    TK_AND
-    TK_BITOR
-    TK_BITXOR
-    TK_BITAND
-    TK_EQUAL
     TK_UNEQUAL
     TK_GREAT
     TK_LESS
     TK_GREAT_EQ
     TK_LESS_EQ
-    TK_LSHIFT
-    TK_RSHIFT
     TK_ADD
     TK_SUB
     TK_MUL
     TK_DIV
-    TK_MOD
-    TK_INC
-    TK_DEC
-    TK_NOT
-    TK_COMP
-    TK_DOT
-    TK_POINTER
     TK_LPAREN
     TK_RPAREN
-    TK_LBRACKET
-    TK_RBRACKET
 
     //punctuators
-    TK_LBRACE
-    TK_RBRACE
     TK_SEMICOLON
-    TK_ELLIPSIS
-    TK_POUND
     TK_NEWLINE
 
     TK_END
+)
+
+var (
+    TokenStrings = []string {
+        "else",
+        "for",
+        "if",
+        "int",
+        "return",
+        "id",
+        "int",
+        "=",
+        "!=",
+        "<",
+        ">=",
+        "<=",
+        "+",
+        "-",
+        "*",
+        "/",
+        "(",
+        ")",
+        ";",
+        "EOF",
+    }
 )
 
 /* comments for tokens
@@ -215,9 +167,8 @@ const (
 
 type TK_value struct {
     i int
-    f float32
-    d float64
+    f float32  // not support yet
+    d float64  // not support yet
     p *string
-    kd int // 1 for int, 2 for float, 3 for double, 4 for *string
+    kd int     // 1 for int, 2 for float, 3 for double, 4 for *string
 }
-
